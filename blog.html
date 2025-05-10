@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - Gisèle Haguma</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">Gisèle Haguma<span>'s Space</span></a>
+        <div class="menu-toggle" id="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav id="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html" class="active-nav">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="blog-listing-page">
+        <div class="container">
+          <h2>Latest Blog Posts</h2>
+          <p class="section-intro">
+            Musings, stories, and updates. Click on a post to read more.
+          </p>
+          <div class="blog-posts-grid" id="blogPostsGrid">
+            <!-- Blog post cards will be loaded here by blog.js -->
+            <p id="blog-loading-message">Loading blog posts...</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-content">
+        <div class="social-media-links">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            class="social-icon icon-instagram"
+            aria-label="Instagram"
+            >IG</a
+          >
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            class="social-icon icon-linkedin"
+            aria-label="LinkedIn"
+            >LI</a
+          >
+          <a
+            href="https://pinterest.com"
+            target="_blank"
+            class="social-icon icon-pinterest"
+            aria-label="Pinterest"
+            >PI</a
+          >
+        </div>
+        <p>
+          © <span id="currentYear"></span> Gisèle Haguma. All Rights Reserved.
+        </p>
+        <p>Designed with love by her brother, Fabrice.</p>
+      </div>
+    </footer>
+
+    <script src="js/blog-config.js"></script>
+    <script src="js/blog.js"></script>
+    <script src="js/main.js"></script>
+    <!-- For menu and footer -->
+  </body>
+</html>

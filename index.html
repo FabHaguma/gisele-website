@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gisele Haguma - website</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html" class="logo">GISELE<span>'s Space</span></a>
+        <div class="menu-toggle" id="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav id="main-nav">
+          <ul>
+            <li><a href="index.html" class="active-nav">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <!-- Scroll to about section on homepage -->
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <!-- Scroll to contact section on homepage -->
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Home Section (Hero) -->
+      <section id="home" class="hero-section">
+        <div class="hero-content">
+          <h1>Welcome to My Little Corner of the Web</h1>
+          <p>
+            Sharing stories, showcasing creative work, and exploring life's
+            adventures. Glad to have you here!
+          </p>
+          <a href="blog.html" class="cta-button">Explore My Blog</a>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about">
+        <div class="container about-container">
+          <div class="about-image">
+            <img
+              src="/images/gisele-frontend.jpeg"
+              alt="A photo of Gisèle Haguma"
+            />
+          </div>
+          <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+              Hello! I'm Gisèle Abizeye Haguma, and this is my personal space to
+              share a bit about myself, my passions, and my journey. I'm an
+              artistic soul with a professional outlook, always eager to learn
+              and create.
+            </p>
+            <p>
+              My interests span from the captivating worlds of movies and TV
+              shows to the thrill of entertainment events. I'm a foodie at
+              heart, always on the lookout for the next delicious meal, and I
+              love to travel and experience new cultures.
+            </p>
+            <p>
+              Here, you'll find reflections on my experiences, peeks into my
+              creative projects, and stories from my adventures. My goal is to
+              connect with family and friends, and hopefully inspire a little
+              joy and creativity along the way.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section (Simplified for homepage) -->
+      <section id="contact">
+        <div class="container">
+          <h2>Get In Touch</h2>
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+          <p id="form-message" class="form-status-message"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-content">
+        <div class="bible-verse">
+          <p>
+            "For I know the plans I have for you,” declares the Lord, “plans to
+            prosper you and not to harm you, plans to give you hope and a
+            future." - Jeremiah 29:11
+          </p>
+        </div>
+        <div class="social-media-links">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            class="social-icon icon-instagram"
+            aria-label="Instagram"
+            >IG</a
+          >
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            class="social-icon icon-linkedin"
+            aria-label="LinkedIn"
+            >LI</a
+          >
+          <a
+            href="https://pinterest.com"
+            target="_blank"
+            class="social-icon icon-pinterest"
+            aria-label="Pinterest"
+            >PI</a
+          >
+        </div>
+        <p>
+          © <span id="currentYear"></span> Gisèle Haguma. All Rights Reserved.
+        </p>
+        <p>Designed with love by her brother, Fabrice.</p>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
