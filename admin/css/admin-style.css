@@ -1,0 +1,216 @@
+/* admin/css/admin-style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* Login Page */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.login-container h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+.login-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.login-container input[type="email"],
+.login-container input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-container button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.login-container button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* General Admin Layout */
+.admin-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.admin-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+.admin-header .user-info, .admin-header #logoutButton {
+    font-size: 0.9em;
+}
+.admin-header #logoutButton {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+.admin-header #logoutButton:hover {
+    background: #c0392b;
+}
+
+.admin-nav {
+    background-color: #34495e;
+    padding: 0;
+}
+.admin-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.admin-nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.admin-nav ul li a:hover, .admin-nav ul li a.active {
+    background-color: #2c3e50;
+}
+.admin-nav ul li a.cta-button {
+    background-color: #27ae60;
+    margin-left: auto; /* Pushes to the right if it's the last item */
+}
+.admin-nav ul li a.cta-button:hover {
+    background-color: #229954;
+}
+
+
+.admin-main {
+    padding: 20px;
+}
+.admin-main section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Forms in Admin */
+.admin-main form div {
+    margin-bottom: 15px;
+}
+.admin-main form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.admin-main form input[type="text"],
+.admin-main form input[type="datetime-local"],
+.admin-main form textarea,
+.admin-main form select {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.admin-main form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.admin-main form button[type="submit"],
+.admin-main form button[type="button"] {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+.admin-main form button[type="submit"]:hover,
+.admin-main form button[type="button"]:hover {
+    background-color: #2980b9;
+}
+.admin-main form #uploadButton {
+    background-color: #2ecc71;
+}
+.admin-main form #uploadButton:hover {
+    background-color: #27ae60;
+}
+
+.status-message { margin-top: 10px; padding: 10px; border-radius: 4px; }
+.success-message { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7;}
+.error-message { background-color: #ffebee; color: #c62828; border: 1px solid #ef9a9a;}
+
+
+/* Table for Manage Posts */
+#postsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+#postsTable th, #postsTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+#postsTable th {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    font-weight: bold;
+}
+#postsTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+#postsTable .action-btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    border: none;
+}
+#postsTable .edit-btn {
+    background-color: #3498db;
+}
+#postsTable .edit-btn:hover {
+    background-color: #2980b9;
+}
+#postsTable .delete-btn {
+    background-color: #e74c3c;
+}
+#postsTable .delete-btn:hover {
+    background-color: #c0392b;
+}

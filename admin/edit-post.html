@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- ... (head similar to dashboard.html) ... -->
+  <body>
+    <header class="admin-header">
+      <h1>Edit/Create Post</h1>
+      <button id="logoutButton" style="float: right; margin: 10px">
+        Logout
+      </button>
+    </header>
+    <nav class="admin-nav">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="manage-posts.html">Manage Blog Posts</a></li>
+      </ul>
+    </nav>
+    <main class="admin-main">
+      <form id="postForm">
+        <input type="hidden" id="postId" />
+        <!-- For editing existing post -->
+        <div>
+          <label for="postTitle">Title:</label>
+          <input type="text" id="postTitle" required />
+        </div>
+        <div>
+          <label for="postSlug">Slug (URL-friendly, unique):</label>
+          <input type="text" id="postSlug" required />
+          <small>e.g., my-awesome-post-title</small>
+        </div>
+        <div>
+          <label for="postCategory">Category:</label>
+          <input type="text" id="postCategory" />
+        </div>
+        <div>
+          <label for="postSnippet">Snippet (Short summary):</label>
+          <textarea id="postSnippet" rows="3"></textarea>
+        </div>
+        <div>
+          <label for="postContent">Content (Markdown or HTML):</label>
+          <textarea id="postContent" rows="15"></textarea>
+        </div>
+
+        <hr />
+        <h3>Thumbnail Image</h3>
+        <div>
+          <label for="imageUpload">Upload Thumbnail:</label>
+          <input type="file" id="imageUpload" accept="image/*" />
+          <button type="button" id="uploadButton">Upload to Cloudinary</button>
+          <p id="uploadStatus"></p>
+          <img
+            id="thumbnailPreview"
+            src="#"
+            alt="Thumbnail Preview"
+            style="max-width: 200px; display: none"
+          />
+        </div>
+        <div>
+          <label for="postThumbnailUrl">Thumbnail URL (from Cloudinary):</label>
+          <input type="text" id="postThumbnailUrl" readonly />
+        </div>
+        <hr />
+
+        <div>
+          <label for="postPublishedAt">Publish Date & Time:</label>
+          <input type="datetime-local" id="postPublishedAt" />
+        </div>
+        <div>
+          <label for="isPublished">
+            <input type="checkbox" id="isPublished" /> Published
+          </label>
+        </div>
+        <button type="submit">Save Post</button>
+        <p id="formStatus" class="status-message"></p>
+      </form>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cloudinary-upload.js"></script>
+    <script src="js/admin-posts.js"></script>
+  </body>
+</html>

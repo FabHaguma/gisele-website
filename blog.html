@@ -12,21 +12,7 @@
   </head>
   <body>
     <header>
-      <div class="container">
-        <a href="index.html" class="logo">Gisèle Haguma<span>'s Space</span></a>
-        <div class="menu-toggle" id="mobile-menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <nav id="main-nav">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="blog.html" class="active-nav">Blog</a></li>
-          </ul>
-        </nav>
-      </div>
+      <!-- ... your header ... -->
     </header>
 
     <main>
@@ -34,10 +20,9 @@
         <div class="container">
           <h2>Latest Blog Posts</h2>
           <p class="section-intro">
-            Musings, stories, and updates. Click on a post to read more.
+            Musings, stories, and updates, now powered by Supabase!
           </p>
           <div class="blog-posts-grid" id="blogPostsGrid">
-            <!-- Blog post cards will be loaded here by blog.js -->
             <p id="blog-loading-message">Loading blog posts...</p>
           </div>
         </div>
@@ -45,40 +30,16 @@
     </main>
 
     <footer>
-      <div class="container footer-content">
-        <div class="social-media-links">
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            class="social-icon icon-instagram"
-            aria-label="Instagram"
-            >IG</a
-          >
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            class="social-icon icon-linkedin"
-            aria-label="LinkedIn"
-            >LI</a
-          >
-          <a
-            href="https://pinterest.com"
-            target="_blank"
-            class="social-icon icon-pinterest"
-            aria-label="Pinterest"
-            >PI</a
-          >
-        </div>
-        <p>
-          © <span id="currentYear"></span> Gisèle Haguma. All Rights Reserved.
-        </p>
-        <p>Designed with love by her brother, Fabrice.</p>
-      </div>
+      <!-- ... your footer ... -->
     </footer>
 
-    <script src="js/blog-config.js"></script>
-    <script src="js/blog.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Supabase CDN library FIRST -->
+    <script src="js/supabase-client.js"></script>
+    <!-- Your client initialization SECOND -->
+    <script src="js/blog-dynamic.js"></script>
+    <!-- Your script using supabase THIRD -->
     <script src="js/main.js"></script>
-    <!-- For menu and footer -->
+    <!-- Other general scripts -->
   </body>
 </html>

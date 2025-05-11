@@ -126,7 +126,8 @@ nav ul li a:hover, nav ul li a.active-nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(74, 144, 226, 0.85), rgba(74, 144, 226, 0.65)), url('https://via.placeholder.com/1500x800.png?text=Abstract+Blue+Background') no-repeat center center/cover;
+    /* Removed placeholder background image */
+    background: linear-gradient(rgba(74, 144, 226, 0.85), rgba(74, 144, 226, 0.65));
     color: var(--light-text);
     padding-top: 80px; /* Account for sticky header */
     opacity: 1; transform: none; /* No fade-in for hero */

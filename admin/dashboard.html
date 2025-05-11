@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Gisèle's Blog</title>
+    <link rel="stylesheet" href="css/admin-style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <header class="admin-header">
+      <h1>Admin Dashboard</h1>
+      <div class="user-info">
+        Logged in as: <span id="userEmail"></span>
+        <button id="logoutButton">Logout</button>
+      </div>
+    </header>
+    <nav class="admin-nav">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="manage-posts.html">Manage Blog Posts</a></li>
+        <!-- Add more links as needed -->
+      </ul>
+    </nav>
+    <main class="admin-main">
+      <section>
+        <h2>Welcome, Gisèle!</h2>
+        <p>Select an option from the navigation to manage your blog.</p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+      // Basic protection and user display
+      document.addEventListener("DOMContentLoaded", () => {
+        if (!supabaseClient.auth.getUser()) {
+          // Check if user is logged in (simplified check)
+          // A more robust check would be to verify the session on page load
+          // window.location.href = 'index.html'; // Redirect if not logged in
+        }
+        const userEmailSpan = document.getElementById("userEmail");
+        supabaseClient.auth.onAuthStateChange((event, session) => {
+          if (session && session.user) {
+            if (userEmailSpan) userEmailSpan.textContent = session.user.email;
+          } else {
+            if (userEmailSpan) userEmailSpan.textContent = "Not logged in";
+            window.location.href = "index.html"; // Redirect if not logged in
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

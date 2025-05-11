@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post - Gisèle Haguma</title>
+    <!-- Title will be updated by JS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- ... your header ... (ensure links go back to ../index.html etc if needed) -->
+      <div class="container">
+        <a href="index.html" class="logo">Gisèle Haguma<span>'s Space</span></a>
+        <div class="menu-toggle" id="mobile-menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav id="main-nav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="blog-post-content-section">
+        <div class="container" id="singlePostContainer">
+          <p id="post-loading-message">Loading post content...</p>
+          <!-- Content will be injected here -->
+        </div>
+        <div
+          class="container back-to-blog"
+          style="margin-top: 30px; text-align: center"
+        >
+          <a href="blog.html" class="cta-button-secondary"
+            >← Back to Blog List</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <!-- ... your footer ... -->
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/single-post.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
