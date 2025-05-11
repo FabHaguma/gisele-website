@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Gallery - Gisèle's Blog Admin</title>
+    <link rel="stylesheet" href="css/admin-style.css" />
+  </head>
+  <body>
+    <header class="admin-header">
+      <h1>Manage Gallery</h1>
+      <div class="user-info">
+        Logged in as: <span id="userEmail"></span>
+        <button id="logoutButton">Logout</button>
+      </div>
+    </header>
+    <nav class="admin-nav">
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="manage-posts.html">Manage Blog Posts</a></li>
+        <li><a href="manage-gallery.html" class="active">Manage Gallery</a></li>
+      </ul>
+    </nav>
+    <main class="admin-main">
+      <section id="addGalleryImageSection">
+        <h2>Add New Gallery Image</h2>
+        <form id="galleryImageForm">
+          <input type="hidden" id="galleryImageId" />
+          <!-- For editing -->
+          <div>
+            <label for="galleryImageUpload">Upload Image:</label>
+            <input
+              type="file"
+              id="galleryImageUpload"
+              accept="image/*"
+              required
+            />
+            <button type="button" id="galleryUploadToCloudinaryBtn">
+              Upload to Cloudinary
+            </button>
+            <p id="galleryUploadStatus"></p>
+            <img
+              id="galleryImagePreview"
+              src="#"
+              alt="Image Preview"
+              style="max-width: 200px; display: none"
+            />
+          </div>
+          <div>
+            <label for="galleryImageUrl">Image URL (from Cloudinary):</label>
+            <input type="text" id="galleryImageUrl" readonly required />
+          </div>
+          <div>
+            <label for="galleryImageTitle">Title (optional caption):</label>
+            <input type="text" id="galleryImageTitle" />
+          </div>
+          <div>
+            <label for="galleryImageAltText"
+              >Alt Text (for accessibility):</label
+            >
+            <input type="text" id="galleryImageAltText" />
+          </div>
+          <div>
+            <label for="galleryImageSortOrder"
+              >Sort Order (optional, lowest first):</label
+            >
+            <input type="number" id="galleryImageSortOrder" value="0" />
+          </div>
+          <div>
+            <label for="galleryIsPublic">
+              <input type="checkbox" id="galleryIsPublic" checked /> Publicly
+              Visible
+            </label>
+          </div>
+          <button type="submit" id="saveGalleryImageBtn">
+            Save Gallery Image
+          </button>
+          <button
+            type="button"
+            id="cancelEditGalleryBtn"
+            style="display: none; background-color: #7f8c8d"
+          >
+            Cancel Edit
+          </button>
+          <p id="galleryFormStatus" class="status-message"></p>
+        </form>
+      </section>
+
+      <section id="listGalleryImagesSection">
+        <h2>Current Gallery Images</h2>
+        <table id="galleryTable">
+          <thead>
+            <tr>
+              <th>Preview</th>
+              <th>Title</th>
+              <th>Alt Text</th>
+              <th>Public</th>
+              <th>Sort Order</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="galleryTableBody">
+            <!-- Images will be loaded here -->
+          </tbody>
+        </table>
+        <p id="loadingGalleryMsg">Loading gallery images...</p>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-client.js"></script>
+    <!-- Ensure this uses supabaseClient -->
+    <script src="js/auth.js"></script>
+    <!-- Uses supabaseClient -->
+    <script src="js/cloudinary-upload.js"></script>
+    <!-- Uses CLOUDINARY_CLOUD_NAME etc. -->
+    <script src="js/admin-gallery.js"></script>
+    <!-- New JS file -->
+  </body>
+</html>

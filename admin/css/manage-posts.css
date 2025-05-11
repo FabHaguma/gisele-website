@@ -1,0 +1,76 @@
+/* Manage Blog Posts Table Styles */
+#postsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.08);
+    overflow: hidden;
+}
+#postsTable th,
+#postsTable td {
+    padding: 14px 12px;
+    border-bottom: 1.5px solid #e0e0e0;
+    text-align: left;
+    font-size: 1em;
+}
+#postsTable th {
+    background: linear-gradient(90deg, #3498db 60%, #6dd5fa 100%);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none;
+}
+#postsTable tr:last-child td {
+    border-bottom: none;
+}
+#postsTable tr:hover {
+    background: #f0f7fa;
+    transition: background 0.2s;
+}
+#postsTable .action-btn {
+    padding: 7px 16px;
+    border-radius: 5px;
+    font-size: 0.98em;
+    font-weight: 600;
+    margin-right: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 1px 4px rgba(52, 152, 219, 0.08);
+}
+#postsTable .edit-btn {
+    background: #3498db;
+    color: #fff;
+}
+#postsTable .edit-btn:hover {
+    background: #2980b9;
+    transform: scale(1.05);
+}
+#postsTable .delete-btn {
+    background: #e74c3c;
+    color: #fff;
+}
+#postsTable .delete-btn:hover {
+    background: #c0392b;
+    transform: scale(1.05);
+}
+#loadingPostsMsg {
+    text-align: center;
+    color: #888;
+    font-size: 1.1em;
+    margin-top: 24px;
+    font-style: italic;
+}
+@media (max-width: 700px) {
+    #postsTable th,
+    #postsTable td {
+        padding: 10px 4px;
+        font-size: 0.98em;
+    }
+    #postsTable .action-btn {
+        padding: 6px 10px;
+        font-size: 0.95em;
+    }
+}

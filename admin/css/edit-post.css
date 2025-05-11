@@ -1,0 +1,155 @@
+/* Blog Post Admin Editor Styles */
+.admin-main form {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.08);
+    padding: 32px 28px 24px 28px;
+    max-width: 650px;
+    margin: 32px auto 0 auto;
+    font-family: 'Segoe UI', 'Lato', Arial, sans-serif;
+}
+.admin-main form h3 {
+    margin-top: 30px;
+    color: #2980b9;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+.admin-main form label {
+    font-weight: 600;
+    color: #34495e;
+    margin-bottom: 6px;
+    display: block;
+    letter-spacing: 0.5px;
+}
+.admin-main form input[type="text"],
+.admin-main form input[type="datetime-local"],
+.admin-main form input[type="file"],
+.admin-main form input[type="email"],
+.admin-main form input[type="password"],
+.admin-main form textarea {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1.5px solid #dbeafe;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    font-size: 1em;
+    background: #f8fafc;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+.admin-main form input[type="text"]:focus,
+.admin-main form input[type="datetime-local"]:focus,
+.admin-main form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+    background: #eaf6fb;
+}
+.admin-main form textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: 'Lato', Arial, sans-serif;
+}
+.admin-main form small {
+    color: #888;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    display: block;
+}
+.admin-main form hr {
+    border: none;
+    border-top: 1.5px solid #e0e0e0;
+    margin: 28px 0 18px 0;
+}
+.admin-main form button[type="submit"] {
+    background: linear-gradient(90deg, #3498db 60%, #6dd5fa 100%);
+    color: #fff;
+    font-weight: 700;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-top: 18px;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.08);
+    transition: background 0.2s, transform 0.2s;
+}
+.admin-main form button[type="submit"]:hover {
+    background: linear-gradient(90deg, #2980b9 60%, #3498db 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+.admin-main form button[type="button"] {
+    background: #2ecc71;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.admin-main form button[type="button"]:hover {
+    background: #27ae60;
+}
+.admin-main form #uploadStatus {
+    font-size: 0.98em;
+    color: #888;
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+.admin-main form #thumbnailPreview {
+    display: block;
+    margin: 12px 0 0 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(52, 152, 219, 0.10);
+    max-width: 220px;
+    max-height: 160px;
+    border: 2px solid #dbeafe;
+    background: #f8fafc;
+}
+.admin-main form #formStatus {
+    margin-top: 18px;
+    font-size: 1.05em;
+    padding: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+.admin-main form .status-message {
+    background: #f8fafc;
+    color: #2c3e50;
+    border: 1px solid #dbeafe;
+}
+.admin-main form .success-message {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+.admin-main form .error-message {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+.admin-main form input[type="checkbox"] {
+    accent-color: #3498db;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.admin-main form label[for="isPublished"] {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #2980b9;
+    margin-top: 8px;
+}
+@media (max-width: 700px) {
+    .admin-main form {
+        padding: 18px 6vw 18px 6vw;
+        max-width: 98vw;
+    }
+    .admin-main form #thumbnailPreview {
+        max-width: 100%;
+        max-height: 120px;
+    }
+}

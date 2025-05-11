@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // --- General Functions ---
     function displayStatus(element, message, isError = false) {
+        console.log('Element:' + element + ' Status message:', message, 'Is error:', isError);
         if (element) {
             element.textContent = message;
             element.className = isError ? 'error-message status-message' : 'success-message status-message';
@@ -154,19 +155,28 @@ document.addEventListener('DOMContentLoaded', async () => {
                 displayStatus(formStatusEl, 'Title, Slug, and Content are required.', true);
                 return;
             }
+            console.log('Post data to save:', postData.title, postData.slug, postData.thumbnail_url);
             
             try {
                 let responseError;
+                console.log('Got here: in try block');
                 if (postIdInput.value) { // Editing existing post
+                    console.log('Got here: in if block - postIdInput.value');
                     const { error } = await supabaseClient
                         .from('blog_posts')
                         .update(postData)
                         .eq('id', postIdInput.value);
+                    console.log('Got here: in if block - postIdInput.value - after supabaseClient');
+                    console.log('Error:', error);
                     responseError = error;
+
                 } else { // Creating new post
+                    console.log('Got here: in else block - postIdInput.value');
                     const { error } = await supabaseClient
                         .from('blog_posts')
                         .insert([postData]);
+                    console.log('Got here: in else block - postIdInput.value - after supabaseClient');
+                    console.log('Error:', error);
                     responseError = error;
                 }
 
@@ -179,9 +189,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                         displayStatus(formStatusEl, `Error saving post: ${responseError.message}`, true);
                     }
                 } else {
+                    console.log('Post saved successfully');
                     displayStatus(formStatusEl, 'Post saved successfully!', false);
                     // Optionally redirect or clear form
                     if (!postIdInput.value) { // If it was a new post
+                        console.log('Got here: in if block - postIdInput.value - after supabaseClient');
                         postForm.reset();
                         if(thumbnailPreviewEl) thumbnailPreviewEl.style.display = 'none';
                         if(postPublishedAtInput) postPublishedAtInput.value = new Date().toISOString().slice(0, 16);
