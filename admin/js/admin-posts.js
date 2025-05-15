@@ -18,6 +18,33 @@ document.addEventListener('DOMContentLoaded', async () => {
     const formStatusEl = document.getElementById('formStatus');
     const thumbnailPreviewEl = document.getElementById('thumbnailPreview'); // From edit-post.html
 
+    let easyMDEInstance = null; // Variable to hold the EasyMDE instance
+
+    // --- Initialize EasyMDE on edit-post.html ---
+    if (postContentInput && document.body.contains(postForm)) { // Only on edit-post.html
+        try {
+            easyMDEInstance = new EasyMDE({
+                element: postContentInput,
+                spellChecker: false, // Enable if you want
+                autosave: {
+                    enabled: true,
+                    uniqueId: "giselesBlogContent",
+                    delay: 1000,
+                },
+                // See EasyMDE docs for more options
+                toolbar: [
+                    "bold", "italic", "heading", "|",
+                    "quote", "unordered-list", "ordered-list", "|",
+                    "link", "image", /* "upload-image" if you add Cloudinary integration */ "|",
+                    "preview", "side-by-side", "fullscreen", "|",
+                    "guide"
+                ],
+            });
+        } catch (e) {
+            console.error("Failed to initialize EasyMDE:", e);
+            // Fallback: just use the textarea
+        }
+    }
 
     // --- General Functions ---
     function displayStatus(element, message, isError = false) {
@@ -40,7 +67,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 .replace(/--+/g, '-'); // Replace multiple - with single -
         });
     }
-
 
     // --- Logic for manage-posts.html ---
     if (postsTableBody) {
@@ -118,7 +144,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
-
     // --- Logic for edit-post.html ---
     if (postForm) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -140,12 +165,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         postForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
+            // Get content from EasyMDE if initialized, otherwise from textarea
+            const contentValue = easyMDEInstance ? easyMDEInstance.value() : postContentInput.value;
+
             const postData = {
                 title: postTitleInput.value,
                 slug: postSlugInput.value,
                 category: postCategoryInput.value || null,
                 snippet: postSnippetInput.value || null,
-                content: postContentInput.value,
+                content: contentValue, // Use EasyMDE content
                 thumbnail_url: postThumbnailUrlInput.value || null,
                 published_at: postPublishedAtInput.value ? new Date(postPublishedAtInput.value).toISOString() : null,
                 is_published: isPublishedCheckbox.checked
@@ -191,12 +219,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 } else {
                     console.log('Post saved successfully');
                     displayStatus(formStatusEl, 'Post saved successfully!', false);
-                    // Optionally redirect or clear form
-                    if (!postIdInput.value) { // If it was a new post
-                        console.log('Got here: in if block - postIdInput.value - after supabaseClient');
+                    // Optionally reset form and EasyMDE if new post
+                    if (!postIdInput.value) {
                         postForm.reset();
                         if(thumbnailPreviewEl) thumbnailPreviewEl.style.display = 'none';
                         if(postPublishedAtInput) postPublishedAtInput.value = new Date().toISOString().slice(0, 16);
+                        if (easyMDEInstance) easyMDEInstance.value("");
                     }
                     setTimeout(() => { window.location.href = 'manage-posts.html'; }, 1500);
                 }
@@ -226,7 +254,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             postSlugInput.value = post.slug;
             postCategoryInput.value = post.category || '';
             postSnippetInput.value = post.snippet || '';
-            postContentInput.value = post.content;
+            // Set content for EasyMDE if initialized
+            if (easyMDEInstance) {
+                easyMDEInstance.value(post.content || "");
+            } else {
+                postContentInput.value = post.content || "";
+            }
             postThumbnailUrlInput.value = post.thumbnail_url || '';
             if (post.thumbnail_url && thumbnailPreviewEl) {
                 thumbnailPreviewEl.src = post.thumbnail_url;

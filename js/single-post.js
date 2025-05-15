@@ -85,21 +85,34 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             const postBody = document.createElement('div');
-            postBody.classList.add('post-body');
-            // **IMPORTANT: Rendering HTML content**
-            // If 'post.content' contains HTML, you need to be careful about XSS.
-            // If it's Markdown, you'll need a Markdown parser library (e.g., Marked.js or Showdown.js)
-            // For now, assuming it's plain text or safe HTML you trust:
-            if (isHTML(post.content)) { // Basic check if content might be HTML
-                postBody.innerHTML = post.content; // Renders HTML. ONLY DO THIS IF YOU TRUST THE SOURCE OR SANITIZE IT.
+            postBody.classList.add('post-body'); // Your CSS styles this class
+
+            // --- Render Markdown content using Marked.js ---
+            if (post.content) {
+                if (typeof marked === 'undefined') {
+                    console.error('Marked.js library is not loaded!');
+                    postBody.textContent = 'Error: Could not render post content (Markdown parser missing).';
+                } else {
+                    // Configure Marked.js (optional but good practice)
+                    marked.setOptions({
+                        renderer: new marked.Renderer(),
+                        pedantic: false,
+                        gfm: true,        // Enable GitHub Flavored Markdown (tables, strikethrough, etc.)
+                        breaks: true,     // Convert single line breaks in text into <br> tags
+                        sanitize: false,  // DEPRECATED. Do not rely on this for security.
+                        // If you need to allow HTML within Markdown and ensure security,
+                        // you'd typically sanitize the HTML output of marked.parse()
+                        // using a library like DOMPurify AFTER parsing.
+                        // For pure Markdown written by Gisèle, this is usually less of a concern.
+                        smartLists: true,
+                        smartypants: false, // Converts quotes, dashes, etc. to smart typographic equivalents
+                        xhtml: false
+                    });
+                    // Parse the Markdown content to HTML
+                    postBody.innerHTML = marked.parse(post.content);
+                }
             } else {
-                 // If it's plain text or Markdown you want to display as preformatted text
-                const pre = document.createElement('pre');
-                pre.style.whiteSpace = 'pre-wrap'; // Ensure text wraps
-                pre.textContent = post.content;
-                postBody.appendChild(pre);
-                // Or, if it's Markdown, you'd parse it here:
-                // postBody.innerHTML = marked.parse(post.content); // Example with Marked.js
+                postBody.textContent = 'This post has no content yet.';
             }
             article.appendChild(postBody);
 
@@ -117,7 +130,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const doc = new DOMParser().parseFromString(str, "text/html");
         return Array.from(doc.body.childNodes).some(node => node.nodeType === 1);
     }
-
 
     fetchAndDisplaySinglePost();
 });
